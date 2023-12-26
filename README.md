@@ -11,7 +11,7 @@ The directory structure should be like this:
   - hs1_${DB3}.txt
   ...
 ```
-You are able to check the database you could download from [CHM13T2T Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
+You are able to check the database you could download from [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
 
 ### 2. Make your data compatible with annovar
 
@@ -39,4 +39,4 @@ table_annovar.pl ${prefix}.avinput $annovarDB/$build \
 -arg ',,,,,,,,,,'
 ```
 
-Keep in mind that operations such as "g," "f," or "r" should be matched with each database. You can find the correct operation for each annotation source on [CHM13T2T Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
+Keep in mind that operations such as "g," "f," or "r" should be matched with each database. You can find the correct operation for each annotation source on [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
