@@ -2,16 +2,23 @@
 
 ### 1. Downloading the Database
 
-To use the CHM13 T2T AnnoVar Database, you can download the pre-built database files from the "releases" section of this repository.
+You can download pre-built databases from [here](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/annovar/), along with references and operation details for each database from the [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
+
 The directory structure should be like this:
 ```bash
 - hs1
-  - hs1_${DB1}.txt
-  - hs1_${DB2}.txt
-  - hs1_${DB3}.txt
+  - hs1_${Database_name_1}.txt
+  - hs1_${Database_name_2}.txt
+  - hs1_${Database_name_3}.txt
   ...
 ```
-You are able to check the database you could download from [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
+
+After downloading the databases, you should unzip each database into a .txt file.
+```bash
+bgzip -d filename.txt.gz
+```
+
+If you intend to annotate variants using the gene annotation databases such as `hs1_draftGene.txt.gz` and `hs1_refGene.txt.gz`, please download `${Database_name}.fa.gz` file as well.
 
 ### 2. Make your data compatible with annovar
 
@@ -26,7 +33,7 @@ Adjust the parameters based on your specific requirements. If you want to check 
 Annotate your variants using ANNOVAR with the downloaded CHM13 T2T AnnoVar Database. Here's an example command:
 
 ```bash
-annovarDB="/data/usr/user1/annovar" # The folder where include hs1/ folder
+annovarDB="/data/usr/user1/annovar/hs1" # The folder where include hs1/ folder
 build="hs1"
 outPrefix="OUT" # the prefix you want. The ouput name would be ${OUT}.hs1_multianno.txt
 
@@ -39,4 +46,4 @@ table_annovar.pl ${prefix}.avinput $annovarDB/$build \
 -arg ',,,,,,,,,,'
 ```
 
-Keep in mind that operations such as "g," "f," or "r" should be matched with each database. You can find the correct operation for each annotation source on [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
+Keep in mind that operations such as `g`, `f`, or `r` should be matched with each database. You can find the correct operation for each annotation source on [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
