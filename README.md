@@ -18,19 +18,20 @@ After downloading the databases, you should unzip each database into a .txt file
 bgzip -d filename.txt.gz
 ```
 
-If you intend to annotate variants using the gene annotation databases such as `hs1_draftGene.txt.gz` and `hs1_refGene.txt.gz`, please download `${Database_name}.fa.gz` file as well.
-There are index file(`.txt.idx`) for filter-based databases, such as allele frequency(`hs1_ALL.sites.2023_12.txt`) and dbSNP(`hs1_dbsnp156.txt`).  It is not a mandatory file, but it would be helpful to reduce computing time during variant annotation.
+If you intend to annotate variants using the gene annotation databases such as `hs1_curGene.txt.gz` and `hs1_refGene.txt.gz`, please download `${Database_name}Mrna.fa.gz` file as well.
+
+There are index file(`.txt.idx`) for filter-based databases, such as allele frequency(`hs1_ALL.sites.2023_12.txt`) and dbSNP(`hs1_snp156.txt`).  It is not a mandatory file, but it would be helpful to reduce computing time during variant annotation.
 
 ### 2. Make your data compatible with annovar
 
-You should make your file compatible with ANNOVAR before annotating with this database. Ensure that your VCF file is properly formatted and contains information about variants such as chromosome, position, reference allele, alternate allele, and additional annotations you want to include in your custom database. Use the `convert2annovar.pl` script to convert your VCF file to ANNOVAR input format:
+You should make your file compatible with ANNOVAR before annotating with this database. Use the `convert2annovar.pl` script to convert your VCF file to ANNOVAR input format:
 
 ```bash
 perl convert2annovar.pl -format vcf4 ${prefix}.vcf > ${prefix}.avinput
 ```
 Adjust the parameters based on your specific requirements. If you want to check the detailed command line, please visit the [ANNOVAR website](https://annovar.openbioinformatics.org/en/latest/).
 
-You can also download the example file(`example.chr22.inp`) from here. This file has been converted from VCF to Annovar-compatible format and contains only the data from chromosome 22. If you choose to start with this example file, you can skip this step.
+You can also download the example file(`example.chr22.inp`) from [here](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/annovar/). This file has been converted from VCF to Annovar-compatible format and contains only the data from chromosome 22. If you choose to start with this example file, you can skip this step.
 
 ### 3. Annotate the Variants
 Annotate your variants using ANNOVAR with the downloaded CHM13 T2T AnnoVar Database. Here's an example command:
