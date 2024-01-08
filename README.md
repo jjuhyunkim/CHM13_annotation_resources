@@ -44,7 +44,7 @@ outPrefix="OUT" # the prefix you want. The ouput name would be ${OUT}.hs1_multia
 table_annovar.pl \
 --thread 10 \ 
 example.chr22.inp \ # Input file from step 2
-$annovarDB/filterDB \ # annovar database direcoty
+$annovarDB/hs1 \ # annovar database direcoty
 -buildver $build \ # hs1 (database prefix)
 -out ${outPrefix} \ # output prefix (example.chr22.out for the example output)
 -remove \
