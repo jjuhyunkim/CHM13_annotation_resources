@@ -8,10 +8,11 @@ This repository is about how to generate the ANNOVAR database💻 for hs1 (CHM13
 <summary>The details how to generate this ANNOVAR database</summary>  
 <br />
 The original files were listed below with the names of ANNOVAR databases, and the formats were transformed to match those of the ANNOVAR databases.<br />
+If the original files are based on GRCh38 or another reference other than CHM13v2.0, the files will need to be liftovered to CHM13 using crossmap. The chain file can be downloaded from the [CHM13 GitHub page](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/chain/v1_nflo/grch38-chm13v2.chain)<br />
 
 ## \[ Genome-based DB \]  
-refGene: [ANNOVAR homepage](http://www.openbioinformatics.org/annovar/download/hs1_refGene.txt.gz)<br />
-hs1_curGene.txt: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_RefSeq_Liftoff_v5.1.gff3.gz)<br />
+`hs1_refGene.txt`: [ANNOVAR homepage](http://www.openbioinformatics.org/annovar/download/hs1_refGene.txt.gz)<br />
+`hs1_curGene.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_RefSeq_Liftoff_v5.1.gff3.gz) - This contains curated annotations of the ampliconic genes on the Y chromosome, correcting annotation errors in GENCODEv35 CAT/Liftoff and RefSeqv110 annotation.<br />
 * If the original file was formatted in GFF, I transformed it to GTF and then used [gtfToGenePred](https://bioconda.github.io/recipes/ucsc-gtftogenepred/README.html) to convert it into GenePred format.<br />
 * The gene annotation databases in ANNOVAR website used to come with ${prefix}Mrna.fa. This files were generated using [`retrieve_seq_from_fasta.pl`](https://github.com/ronammar/Awesomeomics/raw/master/data/annovar_annotations/annovar/retrieve_seq_from_fasta.pl) script.<br />
   ```
@@ -29,10 +30,10 @@ hs1_curGene.txt: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangeno
   ```
 
 ## \[ Filter-based DB \]  
-hs1_dbsnp156.tx: [NCBI DBsnp ftp server](https://ftp.ncbi.nih.gov/snp/latest_release/VCF/GCF_000001405.40.gz)<br />
-hs1_gwas_20231207.txt: [GWAS Catalog](https://www.ebi.ac.uk/gwas/docs/file-downloads) v1.0-associations_e110_r2023-12-07<br />
-hs1_clinvar_20231217.txt : [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/liftover/chm13v2.0_ClinVar20220313.vcf.gz)<br />
-hs1_ALL.sites.2023_12.txt : [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/variants/1000_Genomes_Project/chm13v2.0/)<br /> 
+`hs1_dbsnp156.txt`: [NCBI DBsnp ftp server](https://ftp.ncbi.nih.gov/snp/latest_release/VCF/GCF_000001405.40.gz)<br />
+`hs1_gwas_20231207.txt`: [GWAS Catalog](https://www.ebi.ac.uk/gwas/docs/file-downloads) v1.0-associations_e110_r2023-12-07<br />
+`hs1_clinvar_20231217.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/liftover/chm13v2.0_ClinVar20220313.vcf.gz)<br />
+`hs1_${population}.sites.2023_12.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/variants/1000_Genomes_Project/chm13v2.0/)<br /> - 1KGP allele frequency recalled on T2T-CHM13v2.0. Now available for all chromosomes, for the entire 3,202 samples or the unrelated 2504 samples. (popultation : ALL, AFR, AMR, EAS, EUR, and SAS)
 
 * format(hs1_ALL.sites.2023_12.txt) :<br />
   ```
@@ -43,12 +44,12 @@ hs1_ALL.sites.2023_12.txt : [CHM13 github](https://s3-us-west-2.amazonaws.com/hu
   ```
   
 ## \[ Region-based DB \]   
-hs1_cenSat.txt: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_censat_v2.1.bed) - A more comprehensive centromere/satellite repeat annotation.<br />
-hs1_nonSyntenic.txt: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/chain/v1_nflo/chm13v2-unique_to_hg38.bed) - Regions non-syntenic (unique) compared to GRCh38.<br />
-hs1_hg38_issues.txt: ()<br />
-hs1_sraccess.txt: []()<br />
-hs1_sraccess_hg38.txt: []()<br />
-hs1_sraccess_hs1Only.txt: []()<br />
+`hs1_cenSat.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_censat_v2.1.bed) - A more comprehensive centromere/satellite repeat annotation.<br />
+`hs1_nonSyntenic.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/chain/v1_nflo/chm13v2-unique_to_hg38.bed) - Regions non-syntenic (unique) compared to GRCh38.<br />
+`hs1_hg38_issues.txt`: ()<br />
+`hs1_sraccess.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/accessibility/combined_mask.bed.gz) - short read accessible regions on CHM13 <br />
+`hs1_sraccess_hg38.txt`: []() short read accessible regions on GRCh38 reference then, liftovered to CHM13 <br />
+`hs1_sraccess_hs1Only.txt`: []() short read accessible regions only in CHM13, not in GRCh38 <br />
 
 * format(hs1_cenSat.txt) :
   ```
