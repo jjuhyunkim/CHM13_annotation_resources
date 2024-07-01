@@ -1,3 +1,33 @@
+Welcome! This repository is about how to generate the ANOVA database for hs1 (CHM13v2.0) and how to use this database. Please feel free to leave questions and problems while using this database in the Issues menu.
+
+<details>
+<summary>The details how to generate this anova database</summary>
+
+The original files links were here : 
+
+\[ Genome-based DB \]  
+refGene: ANNOVA homepage (http://www.openbioinformatics.org/annovar/download/hs1_refGene.txt.gz)
+curated Gene : CHM13 github ()
+
+\[ Filter-based DB \]
+dbSNP: NCBI DBsnp ftp server (https://ftp.ncbi.nih.gov/snp/latest_release/VCF/GCF_000001405.40.gz)
+GWAS catalog : GWAS Catalog (https://www.ebi.ac.uk/gwas/docs/file-downloads) v1.0-associations_e110_r2023-12-07
+Clinvar : CHM13 github(https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/liftover/chm13v2.0_ClinVar20220313.vcf.gz)
+
+\[ Region-based DB \]  
+Cen/Sat: CHM13 github ()
+CHM13 syntenic regions : CHM13 github ()
+GRCh38 issue regions : ()
+
+
+
+
+
+</details>
+
+
+
+
 ## Usage
 
 ### 1. Downloading the Database
