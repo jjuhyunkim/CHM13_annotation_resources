@@ -46,10 +46,10 @@ If the original files are based on GRCh38 or another reference other than CHM13v
 ## \[ Region-based DB \]   
 `hs1_cenSat.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_censat_v2.1.bed) - A more comprehensive centromere/satellite repeat annotation.<br />
 `hs1_nonSyntenic.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/chain/v1_nflo/chm13v2-unique_to_hg38.bed) - Regions non-syntenic (unique) compared to GRCh38.<br />
-`hs1_hg38_issues.txt`: ()<br />
+`hs1_hg38_issues.txt`: (CHM13v1 publication)[https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/publications/Nurk_2021/fig1/]<br />
 `hs1_sraccess.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/accessibility/combined_mask.bed.gz) - short read accessible regions on CHM13 <br />
-`hs1_sraccess_hg38.txt`: []() short read accessible regions on GRCh38 reference then, liftovered to CHM13 <br />
-`hs1_sraccess_hs1Only.txt`: []() short read accessible regions only in CHM13, not in GRCh38 <br />
+`hs1_sraccess_hg38.txt`: [CHM13 amazon download server](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/accessibility/) short read accessible regions on GRCh38 reference then, liftovered to CHM13 <br />
+`hs1_sraccess_hs1Only.txt`: short read accessible regions only in CHM13, not in GRCh38 <br />
 
 * format(hs1_cenSat.txt) :
   ```
