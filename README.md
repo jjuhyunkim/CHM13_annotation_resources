@@ -1,20 +1,21 @@
-# The ANNOVAR databases for CHM13.v2.0 reference! 
+# The ANNOVAR databases for CHM13v2.0 reference! 
 
 <span style="font-size: 100px;"> 😊 Welcome!</span> 😊 <br />
 
-This repository is about how to generate the ANNOVAR database💻 for hs1 (CHM13v2.0)🧬 and how to use this database. Please feel free to leave questions and problems while using this database in the Issues menu.
+This repository describes the [ANNOVAR](https://annovar.openbioinformatics.org/) databases💻 for hs1 (CHM13v2.0)🧬 and how to use it. 
+Feel free to leave questions or problems while using this database in the [Issues](CHM13_annotation_resources/issues) menu.
 
 <details>
-<summary>The details how to generate this ANNOVAR database</summary>  
+<summary>How to generate ANNOVAR databases</summary>  
 <br />
-The original files were listed below with the names of ANNOVAR databases, and the formats were transformed to match those of the ANNOVAR databases.<br />
-If the original files are based on GRCh38 or another reference other than CHM13v2.0, the files will need to be liftovered to CHM13 using crossmap. The chain file can be downloaded from the [CHM13 GitHub page](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/chain/v1_nflo/grch38-chm13v2.chain)<br />
+The original files were listed below to match the names of ANNOVAR databases, and the formatted accordingly.<br />
+If the original files are based on GRCh38 or references other than CHM13v2.0, the files were lifted over to CHM13 using crossmap. The chain file can be downloaded from the [CHM13 GitHub page](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/chain/v1_nflo/grch38-chm13v2.chain)<br />
 
 ## \[ Genome-based DB \]  
 `hs1_refGene.txt`: [ANNOVAR homepage](http://www.openbioinformatics.org/annovar/download/hs1_refGene.txt.gz)<br />
 `hs1_curGene.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_RefSeq_Liftoff_v5.1.gff3.gz) - This contains curated annotations of the ampliconic genes on the Y chromosome, correcting annotation errors in GENCODEv35 CAT/Liftoff and RefSeqv110 annotation.<br />
 * If the original file was formatted in GFF, I transformed it to GTF and then used [gtfToGenePred](https://bioconda.github.io/recipes/ucsc-gtftogenepred/README.html) to convert it into GenePred format.<br />
-* The gene annotation databases in ANNOVAR website used to come with ${prefix}Mrna.fa. This files were generated using [`retrieve_seq_from_fasta.pl`](https://github.com/ronammar/Awesomeomics/raw/master/data/annovar_annotations/annovar/retrieve_seq_from_fasta.pl) script.<br />
+* The gene annotation databases in ANNOVAR website used to come with ${prefix}Mrna.fa. This file was generated using [`retrieve_seq_from_fasta.pl`](https://github.com/ronammar/Awesomeomics/raw/master/data/annovar_annotations/annovar/retrieve_seq_from_fasta.pl) script.<br />
   ```
   retrieve_seq_from_fasta.pl --format refGene --seqfile chm13v2.0.fa hs1_refGene.txt --out hs1_refGeneMrna.fa
   ```
@@ -70,7 +71,7 @@ If the original files are based on GRCh38 or another reference other than CHM13v
 
 ### 1. Downloading the Database
 
-You can download pre-built databases and an example file from [here](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/annovar/), along with original resources we used for generating those databases and operation details for each database from the [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
+Pre-built databases and an example file are available to download from [here](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/annovar/), along with original resources we used for generating the databases and operation details for each database on [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing).
 
 The directory structure should be like this:
 ```bash
@@ -81,7 +82,7 @@ The directory structure should be like this:
   ...
 ```
 
-After downloading the databases, you should unzip each database into a .txt file.
+After downloading the databases, unzip each database into a .txt file:
 ```bash
 bgzip -d filename.txt.gz
 ```
@@ -92,20 +93,20 @@ There are index file(`.txt.idx`) for filter-based databases, such as allele freq
 
 ### 2. Make your data compatible with annovar
 
-You should make your file compatible with ANNOVAR before annotating with this database. Use the `convert2annovar.pl` script to convert your VCF file to ANNOVAR input format:
+Make your target VCF file compatible with ANNOVAR before annotating with this database. Use the `convert2annovar.pl` script to convert your VCF file to ANNOVAR input format:
 
 ```bash
 perl convert2annovar.pl -format vcf4 ${prefix}.vcf > ${prefix}.avinput
 ```
-Adjust the parameters based on your specific requirements. If you want to check the detailed command line, please visit the [ANNOVAR website](https://annovar.openbioinformatics.org/en/latest/).
+Adjust the parameters based on your specific requirements. If you would like to learn more of the detailed command line usage, please visit the [ANNOVAR website](https://annovar.openbioinformatics.org/en/latest/).
 
-You can also download the example file(`example.chr22.inp`) from [here](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/annovar/). This file has been converted from VCF to Annovar-compatible format and contains only the data from chromosome 22. If you choose to start with this example file, you can skip this step.
+An example file(`example.chr22.inp`) used in this description is available [here](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/annotation/annovar/). This file has been converted from VCF to Annovar-compatible format and contains only the data from chromosome 22.
 
-### 3. Annotate the Variants
-Annotate your variants using ANNOVAR with the downloaded CHM13 T2T AnnoVar Database. Here's an example command:
+### 3. Annotate Variants
+Annotate your variants using ANNOVAR with the following command:
 
 ```bash
-annovarDB="/data/usr/user1/annovar/hs1" # The folder where include hs1/ folder
+annovarDB="/path/to/annovar/hs1" # The folder where include hs1/ folder
 build="hs1"
 outPrefix="OUT" # the prefix you want. The ouput name would be ${OUT}.hs1_multianno.txt
 
@@ -121,4 +122,4 @@ $annovarDB/hs1 \ # annovar database direcoty
 -arg ',,,,,,,,,,,,,,,,,'
 ```
 
-Keep in mind that operations such as `g`, `f`, or `r` should be matched with each database. You can find the correct operation for each annotation source on [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing)
+Keep in mind that operations such as `g`, `f`, or `r` needs to match each database. You can find the correct operation for each annotation source on [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing).
