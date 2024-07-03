@@ -31,7 +31,6 @@ If the original files are based on GRCh38 or another reference other than CHM13v
 
 ## \[ Filter-based DB \]  
 `hs1_dbsnp156.txt`: [NCBI DBsnp ftp server](https://ftp.ncbi.nih.gov/snp/latest_release/VCF/GCF_000001405.40.gz)<br />
-`hs1_gwas_20231207.txt`: [GWAS Catalog](https://www.ebi.ac.uk/gwas/docs/file-downloads) v1.0-associations_e110_r2023-12-07<br />
 `hs1_clinvar_20231217.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/liftover/chm13v2.0_ClinVar20220313.vcf.gz)<br />
 `hs1_${population}.sites.2023_12.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/assemblies/variants/1000_Genomes_Project/chm13v2.0/)<br /> - 1KGP allele frequency recalled on T2T-CHM13v2.0. Now available for all chromosomes, for the entire 3,202 samples or the unrelated 2504 samples. (popultation : ALL, AFR, AMR, EAS, EUR, and SAS)
 
@@ -44,6 +43,7 @@ If the original files are based on GRCh38 or another reference other than CHM13v
   ```
   
 ## \[ Region-based DB \]   
+`hs1_gwas_20231207.txt`: [GWAS Catalog](https://www.ebi.ac.uk/gwas/docs/file-downloads) v1.0-associations_e110_r2023-12-07<br />
 `hs1_cenSat.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_censat_v2.1.bed) - A more comprehensive centromere/satellite repeat annotation.<br />
 `hs1_nonSyntenic.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/chain/v1_nflo/chm13v2-unique_to_hg38.bed) - Regions non-syntenic (unique) compared to GRCh38.<br />
 `hs1_hg38_issues.txt`: (CHM13v1 publication)[https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/CHM13/publications/Nurk_2021/fig1/]<br />
