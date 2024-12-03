@@ -13,7 +13,7 @@ If the original files are based on GRCh38 or references other than CHM13v2.0, th
 
 ## \[ Genome-based DB \]  
 `hs1_refGene.txt`: [ANNOVAR homepage](http://www.openbioinformatics.org/annovar/download/hs1_refGene.txt.gz)<br />
-`hs1_curGene.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_RefSeq_Liftoff_v5.1.gff3.gz) - This contains curated annotations of the ampliconic genes on the Y chromosome, correcting annotation errors in GENCODEv35 CAT/Liftoff and RefSeqv110 annotation.<br />
+`hs1_curGene5.2.txt`: [CHM13 github](https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/chm13v2.0_RefSeq_Liftoff_v5.2.gff3.gz) - This contains curated annotations of the ampliconic genes on the Y chromosome, correcting annotation errors in GENCODEv35 CAT/Liftoff and RefSeqv110 annotation.<br />
 * If the original file was formatted in GFF, I transformed it to GTF and then used [gtfToGenePred](https://bioconda.github.io/recipes/ucsc-gtftogenepred/README.html) to convert it into GenePred format.<br />
 * The gene annotation databases in ANNOVAR website used to come with ${prefix}Mrna.fa. This file was generated using [`retrieve_seq_from_fasta.pl`](https://github.com/ronammar/Awesomeomics/raw/master/data/annovar_annotations/annovar/retrieve_seq_from_fasta.pl) script.<br />
   ```
@@ -117,7 +117,7 @@ $annovarDB/hs1 \ # annovar database direcoty
 -buildver $build \ # hs1 (database prefix)
 -out ${outPrefix} \ # output prefix (example.chr22.out for the example output)
 -remove \
--protocol refGene,curGene,dbsnp156,1000g2023dec_all,1000g2023dec_afr,1000g2023dec_amr,1000g2023dec_eas,1000g2023dec_eur,1000g2023dec_sas,clinvar_20231217,gwas_20231207,nonSyntenic,hg38_issues,feat,cenSat,sraccess,sraccess_hg38,sraccess_hs1Only \
+-protocol refGene,curGene5.2,dbsnp156,1000g2023dec_all,1000g2023dec_afr,1000g2023dec_amr,1000g2023dec_eas,1000g2023dec_eur,1000g2023dec_sas,clinvar_20231217,gwas_20231207,nonSyntenic,hg38_issues,feat,cenSat,sraccess,sraccess_hg38,sraccess_hs1Only \
 -operation g,g,f,f,f,f,f,f,f,f,r,r,r,r,r,r,r,r \
 -arg ',,,,,,,,,,,,,,,,,'
 ```
