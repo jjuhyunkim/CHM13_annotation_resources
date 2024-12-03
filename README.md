@@ -123,3 +123,27 @@ $annovarDB/hs1 \ # annovar database direcoty
 ```
 
 Keep in mind that operations such as `g`, `f`, or `r` needs to match each database. You can find the correct operation for each annotation source on [T2T-CHM13 Databases and operation](https://docs.google.com/spreadsheets/d/1sgjmGLLbXAZpyNiSUbxiEa1hJEVDxuOqL1yAmpDV5BA/edit?usp=sharing).
+
+
+
+# Variant Effect Predictor (VEP)
+
+There are numerous plugins available for VEP, such as AlphaMissense, CADD, SpliceVault, and others. You can find them on the [VEP plugin homepage](https://plants.ensembl.org/info/docs/tools/vep/script/vep_plugins.html). Here, we introduce how to run VEP using a VCF and GFF file based on the CHM13 reference. You can download the reference genome and gene annotation in GFF format from the [CHM13 GitHub repository](https://github.com/marbl/CHM13?tab=readme-ov-file). The plugins are optional, so you can use others as needed; this is just an example.
+
+```bash
+vcf=test.vcf.gz 
+ref=chm13v2.0.fa # whatever reference you've used for aligning.
+gff=chm13v2.0_RefSeq_Liftoff_v5.2.gff.gz
+VEP_CACHEDIR=./vepCash
+
+mkdir -p $VEP_CACHEDIR
+
+vep --fork 50 \
+ -i ${vcf} \
+ --gff ${gff} \
+ -o ${vcf}.vep \
+ --force_overwrite \
+ --dir ${VEP_CACHEDIR} \
+ --fasta ${ref} \
+ --everything
+```
