@@ -141,7 +141,7 @@ tabix -p gff chm13v2.0_RefSeq_Liftoff_v5.1.gff_forVEP.gz
 ```bash
 vcf=test.vcf.gz 
 ref=chm13v2.0.fa # whatever reference you've used for aligning.
-gff=chm13v2.0_RefSeq_Liftoff_v5.2.gff.gz
+gff=chm13v2.0_RefSeq_Liftoff_v5.2.gff_forVEP.gz
 VEP_CACHEDIR=./vepCash
 
 mkdir -p $VEP_CACHEDIR
